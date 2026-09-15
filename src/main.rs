@@ -101,5 +101,55 @@ fn main() -> std::io::Result<()> {
 </svg>
 "##))?;
 
+    let small_arc_start_x = pentagon_width / 4.;
+    let small_arc_start_y = pentagon_edge_length * cos54 / 2.;
+    let small_arc_radius = pentagon_edge_length / 2.;
+    let small_arc_offset_x = pentagon_width / 2.;
+    let small_arc_offset_y = 0;
+    let large_arc_start_x = pentagon_edge_length * cos72 / 2.;
+    let large_arc_start_y = pentagon_edge_length * (cos54 + sin72 / 2.);
+    let pentagon_diagonal = (pentagon_height * pentagon_height + pentagon_edge_length * pentagon_edge_length / 4.).sqrt();
+    let large_arc_radius = pentagon_edge_length / 2. + pentagon_diagonal;
+    let large_arc_offset_x = pentagon_edge_length * (1. + cos72);
+    let large_arc_offset_y = 0;
+
+    fs::write("dodecahedron-mixed-arc-tiles.svg", format!(r##"<svg width="{dodecahedron_tiles_image_width}" height="{dodecahedron_tiles_image_height}" viewBox="0 0 {dodecahedron_tiles_image_width} {dodecahedron_tiles_image_height}" xmlns="http://www.w3.org/2000/svg" version="2">
+    <defs>
+        <path id="pentagon-edge" d="M {pentagon_edge_start_x},{pentagon_edge_start_y} h {pentagon_edge_length}" fill="none" stroke="grey" stroke-width="{pentagon_stroke_width}" />
+        <g id="pentagon-tile">
+            <use href="#pentagon-edge" />
+            <use href="#pentagon-edge" transform="rotate(72, {pentagon_centre_x}, {pentagon_centre_y})" />
+            <use href="#pentagon-edge" transform="rotate(144, {pentagon_centre_x}, {pentagon_centre_y})" />
+            <use href="#pentagon-edge" transform="rotate(216, {pentagon_centre_x}, {pentagon_centre_y})" />
+            <use href="#pentagon-edge" transform="rotate(288, {pentagon_centre_x}, {pentagon_centre_y})" />
+        </g>
+        <path id="small-arc-component" d="M {small_arc_start_x},{small_arc_start_y} a {small_arc_radius} {small_arc_radius} 108 0 0 {small_arc_offset_x},{small_arc_offset_y}" fill="none" />
+        <g id="small-arc">
+            <use href="#small-arc-component" stroke="#921" stroke-width="{wide_arc_width}" />
+            <use href="#small-arc-component" stroke="#db0" stroke-width="{narrow_arc_width}" />
+        </g>
+        <path id="large-arc-component" d="M {large_arc_start_x},{large_arc_start_y} a {large_arc_radius} {large_arc_radius} 108 0 1 {large_arc_offset_x},{large_arc_offset_y}" fill="none" />
+        <g id="large-arc">
+            <use href="#large-arc-component" stroke="#921" stroke-width="{wide_arc_width}" />
+            <use href="#large-arc-component" stroke="#db0" stroke-width="{narrow_arc_width}" />
+        </g>
+        <g id="pentagon-tile-with-arcs">
+            <use href="#pentagon-tile" />
+            <use href="#small-arc" />
+            <use href="#large-arc" />
+        </g>
+        <g id="tile-row">
+            <use href="#pentagon-tile-with-arcs" x="0" y="0" />
+            <use href="#pentagon-tile-with-arcs" x="{pentagon_width}" y="0" />
+            <use href="#pentagon-tile-with-arcs" x="{pentagon_double_width}" y="0" />
+            <use href="#pentagon-tile-with-arcs" x="{pentagon_triple_width}" y="0" />
+        </g>
+    </defs>
+    <use href="#tile-row" x="0" y="0" />
+    <use href="#tile-row" x="0" y="{pentagon_height}" />
+    <use href="#tile-row" x="0" y="{pentagon_double_height}" />
+</svg>
+"##))?;
+
     Ok(())
 }
