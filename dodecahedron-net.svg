@@ -1,0 +1,25 @@
+<svg width="1224.467844093695" height="604.311008020561" viewBox="0 0 1224.467844093695 604.311008020561" xmlns="http://www.w3.org/2000/svg" version="2">
+    <defs>
+        <path id="pentagon-edge" d="M 46.89745605224614,223.326265288144 h 148.91018620799196" fill="none" stroke="grey" stroke-width="13.5" />
+        <g id="pentagon-tile">
+            <use href="#pentagon-edge" stroke="red" />
+            <use href="#pentagon-edge" transform="rotate(72, 121.35254915624212, 127.597621252806)" stroke="orange" />
+            <use href="#pentagon-edge" transform="rotate(144, 121.35254915624212, 127.597621252806)" stroke="yellow" />
+            <use href="#pentagon-edge" transform="rotate(216, 121.35254915624212, 127.597621252806)" stroke="green" />
+            <use href="#pentagon-edge" transform="rotate(288, 121.35254915624212, 127.597621252806)" stroke="blue" />
+        </g>
+        <g id="pentagons-around-pentagon">
+            <use href="#pentagon-tile" x="196.3525491562421" y="0" transform="rotate(180, 317.7050983124842, 230.826265288144)" />
+            <use href="#pentagon-tile" x="196.3525491562421" y="0" />
+            <use href="#pentagon-tile" x="196.3525491562421" y="0" transform="rotate(72, 317.7050983124842, 334.054909323482)" />
+            <use href="#pentagon-tile" x="196.3525491562421" y="0" transform="rotate(144, 317.7050983124842, 334.054909323482)" />
+            <use href="#pentagon-tile" x="196.3525491562421" y="0" transform="rotate(216, 317.7050983124842, 334.054909323482)" />
+            <use href="#pentagon-tile" x="196.3525491562421" y="0" transform="rotate(288, 317.7050983124842, 334.054909323482)" />
+        </g>
+        <g id="dodecahedron-net">
+            <use href="#pentagons-around-pentagon" />
+            <use href="#pentagons-around-pentagon" transform="rotate(180, 612.2339220468475, 302.1555040102805)" />
+        </g>
+    </defs>
+    <use href="#dodecahedron-net" />
+</svg>

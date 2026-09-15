@@ -1,0 +1,31 @@
+<svg width="970.820393249937" height="692.478795864432" viewBox="0 0 970.820393249937 692.478795864432" xmlns="http://www.w3.org/2000/svg" version="2">
+    <defs>
+        <path id="pentagon-edge" d="M 46.35254915624212,223.326265288144 h 150" fill="none" stroke="grey" stroke-width="15" />
+        <g id="pentagon-tile">
+            <use href="#pentagon-edge" />
+            <use href="#pentagon-edge" transform="rotate(72, 121.35254915624212, 127.597621252806)" />
+            <use href="#pentagon-edge" transform="rotate(144, 121.35254915624212, 127.597621252806)" />
+            <use href="#pentagon-edge" transform="rotate(216, 121.35254915624212, 127.597621252806)" />
+            <use href="#pentagon-edge" transform="rotate(288, 121.35254915624212, 127.597621252806)" />
+        </g>
+        <path id="arc-component" d="M 60.67627457812106,44.083893921935484 a 75 75 108 0 1 -37.5,115.413132644072" fill="none" />
+        <g id="arc">
+            <use href="#arc-component" stroke="#24f" stroke-width="40" />
+            <use href="#arc-component" stroke="#6de" stroke-width="20" />
+        </g>
+        <g id="pentagon-tile-with-arcs">
+            <use href="#pentagon-tile" />
+            <use href="#arc" />
+            <use href="#arc" transform="rotate(144, 121.35254915624212, 127.597621252806)" />
+        </g>
+        <g id="tile-row">
+            <use href="#pentagon-tile-with-arcs" x="0" y="0" />
+            <use href="#pentagon-tile-with-arcs" x="242.70509831248424" y="0" />
+            <use href="#pentagon-tile-with-arcs" x="485.4101966249685" y="0" />
+            <use href="#pentagon-tile-with-arcs" x="728.1152949374527" y="0" />
+        </g>
+    </defs>
+    <use href="#tile-row" x="0" y="0" />
+    <use href="#tile-row" x="0" y="230.826265288144" />
+    <use href="#tile-row" x="0" y="461.652530576288" />
+</svg>
